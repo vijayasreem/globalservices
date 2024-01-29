@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Action_Results__c</fullName>
+    <externalId>false</externalId>
+    <label>Action Results</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cancel</fullName>
+                <default>false</default>
+                <label>Cancel</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <label>Withdrawn</label>
+            </value>
+            <value>
+                <fullName>Not Home</fullName>
+                <default>false</default>
+                <label>Not Home</label>
+            </value>
+            <value>
+                <fullName>Refused</fullName>
+                <default>false</default>
+                <label>Refused</label>
+            </value>
+            <value>
+                <fullName>Terminated</fullName>
+                <default>false</default>
+                <label>Terminated</label>
+            </value>
+            <value>
+                <fullName>HoH</fullName>
+                <default>false</default>
+                <label>HoH</label>
+            </value>
+            <value>
+                <fullName>Interpreter</fullName>
+                <default>false</default>
+                <label>Interpreter</label>
+            </value>
+            <value>
+                <fullName>Audio Request</fullName>
+                <default>false</default>
+                <label>Audio Request</label>
+            </value>
+            <value>
+                <fullName>Video Request</fullName>
+                <default>false</default>
+                <label>Video Request</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

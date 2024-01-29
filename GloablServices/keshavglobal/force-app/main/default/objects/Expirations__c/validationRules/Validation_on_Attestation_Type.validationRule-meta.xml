@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_on_Attestation_Type</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL(Document_Type__c, &apos;Attestation&apos;),
+OR(ISBLANK( Start_Date__c ), ISBLANK( Expiration_Date__c)))</errorConditionFormula>
+    <errorDisplayField>Document_Type__c</errorDisplayField>
+    <errorMessage>Start date and Expiration date are mandatory for the Document Type Attestation.</errorMessage>
+</ValidationRule>

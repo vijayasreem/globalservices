@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fax_Failed</fullName>
+    <columns>NAME</columns>
+    <columns>Intake_Request__c</columns>
+    <columns>Account_Product__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Fax_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Fax_Status__c</field>
+        <operation>equals</operation>
+        <value>Failed</value>
+    </filters>
+    <label>Fax Failed</label>
+</ListView>

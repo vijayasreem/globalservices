@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fax_Number__c</fullName>
+    <externalId>false</externalId>
+    <formula>&apos;(&apos; &amp; LEFT( Intake_Request__r.Provider_Fax__c, 3) &amp; &apos;)&apos; &amp; MID(Intake_Request__r.Provider_Fax__c, 4, 3) &amp; &apos;-&apos; &amp; MID(Intake_Request__r.Provider_Fax__c, 7, 4)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Fax Number</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

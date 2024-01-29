@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Interview_Type__c</fullName>
+    <description>Video/Virtual or Telephonic</description>
+    <externalId>false</externalId>
+    <label>Interview Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Interviewer_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Video / Virtual</fullName>
+                <default>false</default>
+                <label>Video / Virtual</label>
+            </value>
+            <value>
+                <fullName>Telephonic</fullName>
+                <default>false</default>
+                <label>Telephonic</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Clinician</controllingFieldValue>
+            <controllingFieldValue>Non-Clinician</controllingFieldValue>
+            <valueName>Video / Virtual</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Clinician</controllingFieldValue>
+            <controllingFieldValue>Non-Clinician</controllingFieldValue>
+            <valueName>Telephonic</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Medicare_Insurance</fullName>
+    <columns>IntegrationLogId__c</columns>
+    <columns>ObjectId__c</columns>
+    <columns>Message__c</columns>
+    <columns>ObjectName__c</columns>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>InvocationMethod__c</columns>
+    <columns>Status__c</columns>
+    <columns>StartTime__c</columns>
+    <columns>FailureReason__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>LAST_MONTH</value>
+    </filters>
+    <filters>
+        <field>InvocationMethod__c</field>
+        <operation>contains</operation>
+        <value>Medicare</value>
+    </filters>
+    <filters>
+        <field>FailureReason__c</field>
+        <operation>contains</operation>
+        <value>InvalIdOrMissingProvIderIden</value>
+    </filters>
+    <label>Medicare Insurance</label>
+</ListView>

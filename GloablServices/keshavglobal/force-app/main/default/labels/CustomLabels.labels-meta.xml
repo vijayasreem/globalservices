@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Active_bid_list_view_id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Active bid list view id</shortDescription>
+        <value>00B7g000004OMnDEAW</value>
+    </labels>
+    <labels>
+        <fullName>Community_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Community URL</shortDescription>
+        <value>https://dev-ltcg-nurse-portal.cs200.force.com</value>
+    </labels>
+    <labels>
+        <fullName>Default_Fax_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default Fax Number</shortDescription>
+        <value>952-314-4370</value>
+    </labels>
+    <labels>
+        <fullName>Enable_Logs</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Enable Logs</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>Hours_for_Ready_Status</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hours for Ready Status</shortDescription>
+        <value>24</value>
+    </labels>
+    <labels>
+        <fullName>Service_Cancel_Request_Time</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Cancel Request Time</shortDescription>
+        <value>24</value>
+    </labels>
+    <labels>
+        <fullName>To_Email_Addresses_For_Invoice</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>To Email Addresses For Invoice</shortDescription>
+        <value>sindhusri.ambati@appshark.com, santhosh.kandhukuri@appshark.com, ajith.balguri@appshark.com</value>
+    </labels>
+</CustomLabels>

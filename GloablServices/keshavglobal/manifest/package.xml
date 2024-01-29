@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    <types>
+        <members>Service_Request_Fax_Failed</members>
+        <members>Unmatched_Received_Documents</members>
+        <name>Group</name>
+    </types>
+    
+ <version>58.0</version>
+</Package>

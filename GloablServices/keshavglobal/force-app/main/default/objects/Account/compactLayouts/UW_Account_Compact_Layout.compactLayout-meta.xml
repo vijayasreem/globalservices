@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UW_Account_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>ParentId</fields>
+    <fields>Insurance_Type__c</fields>
+    <fields>Nurse_Auto_Offer__c</fields>
+    <fields>MCAS_Composite_Threshold__c</fields>
+    <label>UW Account Compact Layout</label>
+</CompactLayout>

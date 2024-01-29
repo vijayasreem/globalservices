@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Intake_Requests_Case</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>Policy_Number__c</columns>
+    <columns>Claim__c</columns>
+    <columns>Claimant_Name__c</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>Completion_Date__c</columns>
+    <columns>Billed_Date__c</columns>
+    <columns>Product_Code__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Code__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>All Service Intake Requests</label>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

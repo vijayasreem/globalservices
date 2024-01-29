@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Intake_Request_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Intake Request Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Intake Processing</fullName>
+                <default>true</default>
+                <label>Intake Processing</label>
+            </value>
+            <value>
+                <fullName>Locate Field Nurse</fullName>
+                <default>false</default>
+                <label>Locate Field Nurse</label>
+            </value>
+            <value>
+                <fullName>Send Paperwork</fullName>
+                <default>false</default>
+                <label>Send Paperwork</label>
+            </value>
+            <value>
+                <fullName>Schedule Appointment</fullName>
+                <default>false</default>
+                <label>Schedule Appointment</label>
+            </value>
+            <value>
+                <fullName>Perform Assessment</fullName>
+                <default>false</default>
+                <label>Perform Assessment</label>
+            </value>
+            <value>
+                <fullName>Receive Assessment</fullName>
+                <default>false</default>
+                <label>Receive Assessment</label>
+            </value>
+            <value>
+                <fullName>Process Paperwork</fullName>
+                <default>false</default>
+                <label>Process Paperwork</label>
+            </value>
+            <value>
+                <fullName>Process Assessment</fullName>
+                <default>false</default>
+                <label>Process Assessment</label>
+            </value>
+            <value>
+                <fullName>Send Report</fullName>
+                <default>false</default>
+                <label>Send Report</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

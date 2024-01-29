@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Failed</fullName>
+                <default>false</default>
+                <label>Failed</label>
+            </value>
+            <value>
+                <fullName>DocumentsSentOut</fullName>
+                <default>false</default>
+                <label>Documents Sent Out</label>
+            </value>
+            <value>
+                <fullName>Documents In Progress</fullName>
+                <default>false</default>
+                <label>Documents In Progress</label>
+            </value>
+            <value>
+                <fullName>QA Complete</fullName>
+                <default>false</default>
+                <label>QA Complete</label>
+            </value>
+            <value>
+                <fullName>Complete</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <label>Withdrawn</label>
+            </value>
+            <value>
+                <fullName>Complete Full</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complete Full</label>
+            </value>
+            <value>
+                <fullName>Complete No Records Returned</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complete No Records Returned</label>
+            </value>
+            <value>
+                <fullName>Complete Partial</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complete Partial</label>
+            </value>
+            <value>
+                <fullName>Documents Sent</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Documents Sent</label>
+            </value>
+            <value>
+                <fullName>Late Cancel</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Late Cancel</label>
+            </value>
+            <value>
+                <fullName>SentToCase360</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sent To Case 360</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agency__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>We need to know if the provider is an Agency or ICN (Independent Contracted Nurse). Contracted Assessors have priority for Opportunities.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is Agency - CTA Icon</inlineHelpText>
+    <label>Agency</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

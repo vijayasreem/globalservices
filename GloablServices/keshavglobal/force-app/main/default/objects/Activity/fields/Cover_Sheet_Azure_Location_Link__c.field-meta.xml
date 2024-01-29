@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cover_Sheet_Azure_Location_Link__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Cover_Sheet_Azure_Location__c != null, HYPERLINK(&apos;/lightning/cmp/c__LinkToAzureAttachmentWithSASToken?c__recid=&apos;+Id, &apos;Click to Download&apos;,&apos;_self&apos;) , &apos;Cover Sheet Azure Location is Blank&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Cover Sheet Azure Location Link</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

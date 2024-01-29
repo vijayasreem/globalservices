@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AM_Name__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Account Manager for the Carrier</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Account Manager for the Carrier</inlineHelpText>
+    <label>AM Name</label>
+    <!--<lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>LTCG Employee</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>-->
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

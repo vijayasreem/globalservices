@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Type_Coversheet__c</fullName>
+    <description>Formula field to change MDS initial to Full Admission MDS and Nurse Assessment to Assessment/Oasis for coversheet output</description>
+    <externalId>false</externalId>
+    <formula>IF(Account_Product_Service__r.ServiceType__c = &quot;MDS - Initial&quot;, &quot;Full Admission MDS&quot;, IF(Account_Product_Service__r.ServiceType__c= &quot;Nursing Assessment&quot;, &quot;Assessment/Oasis&quot;, Account_Product_Service__r.ServiceType__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Service Type Coversheet</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

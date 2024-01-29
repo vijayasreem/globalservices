@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_On_Expiration_Date_Insurance</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL(Document_Type__c, &apos;Insurance&apos;),
+OR(ISBLANK( Start_Date__c ), ISBLANK( Expiration_Date__c)))</errorConditionFormula>
+    <errorDisplayField>Document_Type__c</errorDisplayField>
+    <errorMessage>Start Date and Expiration Date are mandatory for the Document type Insurance</errorMessage>
+</ValidationRule>

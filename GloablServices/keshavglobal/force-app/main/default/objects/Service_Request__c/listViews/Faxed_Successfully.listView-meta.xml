@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Faxed_Successfully</fullName>
+    <columns>NAME</columns>
+    <columns>Intake_Request__c</columns>
+    <columns>Account_Product__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Fax_Status__c</columns>
+    <columns>Fax_Date_Time__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Fax_Status__c</field>
+        <operation>equals</operation>
+        <value>Success</value>
+    </filters>
+    <label>Faxed Successfully</label>
+</ListView>

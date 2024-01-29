@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Offer_when_F2F_ASMT</fullName>
+    <active>true</active>
+    <description>Nurse Auto Offer is only a valid selection, if the ASMT Type = F2F</description>
+    <errorConditionFormula>AND(OR(ISPICKVAL( ASMT_Type__c , &quot;TELE&quot;),ISPICKVAL( ASMT_Type__c , &quot;VID&quot;)), Nurse_Auto_Offer__c )</errorConditionFormula>
+    <errorMessage>Nurse auto offer is only available for F2F</errorMessage>
+</ValidationRule>

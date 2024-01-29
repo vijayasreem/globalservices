@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Role</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Clinician</fullName>
+                <default>false</default>
+                <label>Clinician</label>
+            </value>
+            <value>
+                <fullName>CSR  - ASC</fullName>
+                <default>false</default>
+                <label>CSR  - ASC</label>
+            </value>
+            <value>
+                <fullName>NNN Administrator</fullName>
+                <default>false</default>
+                <label>NNN Administrator</label>
+            </value>
+            <value>
+                <fullName>Conern Res Analyst</fullName>
+                <default>false</default>
+                <label>Conern Res Analyst</label>
+            </value>
+            <value>
+                <fullName>QA Specialist</fullName>
+                <default>false</default>
+                <label>QA Specialist</label>
+            </value>
+            <value>
+                <fullName>FL License</fullName>
+                <default>false</default>
+                <label>FL License</label>
+            </value>
+            <value>
+                <fullName>Manager</fullName>
+                <default>false</default>
+                <label>Manager</label>
+            </value>
+            <value>
+                <fullName>Supervisor</fullName>
+                <default>false</default>
+                <label>Supervisor</label>
+            </value>
+            <value>
+                <fullName>Accounting</fullName>
+                <default>false</default>
+                <label>Accounting</label>
+            </value>
+            <value>
+                <fullName>ASC Intake Coordinator</fullName>
+                <default>false</default>
+                <label>ASC Intake Coordinator</label>
+            </value>
+            <value>
+                <fullName>Account Manager</fullName>
+                <default>false</default>
+                <label>Account Manager</label>
+            </value>
+            <value>
+                <fullName>ASC OB Coordinator</fullName>
+                <default>false</default>
+                <label>ASC OB Coordinator</label>
+            </value>
+            <value>
+                <fullName>ASC  Editor Review /Data Entry</fullName>
+                <default>false</default>
+                <label>ASC  Editor Review /Data Entry</label>
+            </value>
+            <value>
+                <fullName>ASC Document Matching</fullName>
+                <default>false</default>
+                <label>ASC Document Matching</label>
+            </value>
+            <value>
+                <fullName>ASC Peer Approval</fullName>
+                <default>false</default>
+                <label>ASC Peer Approval</label>
+            </value>
+            <value>
+                <fullName>ASC Medical Records</fullName>
+                <default>false</default>
+                <label>ASC Medical Records</label>
+            </value>
+            <value>
+                <fullName>Clinician Review</fullName>
+                <default>false</default>
+                <label>Clinician Review</label>
+            </value>
+            <value>
+                <fullName>Recruiters</fullName>
+                <default>false</default>
+                <label>Recruiters</label>
+            </value>
+            <value>
+                <fullName>Trainer</fullName>
+                <default>false</default>
+                <label>Trainer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

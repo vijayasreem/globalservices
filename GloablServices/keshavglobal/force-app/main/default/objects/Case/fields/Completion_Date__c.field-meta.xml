@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completion_Date__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>When the Case goes to Complete which represents the date it is sent to Accounting for billing</inlineHelpText>
+    <label>Completion Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

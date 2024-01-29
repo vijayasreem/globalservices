@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Roles__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ( INCLUDES ( Contact__r.Role__c , &quot;Clinician&quot; ), &quot;Clinician, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;CSR&quot; ), &quot;CSR, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;NNN&quot; ), &quot;NNN, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;Con Res&quot; ), &quot;Con Res, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;QA Specialist&quot; ), &quot;QA Specialist, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;FL License&quot; ), &quot;FL License, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;Manager&quot; ), &quot;Manager, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;Supervisor&quot; ), &quot;Supervisor, &quot;,null ) &amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;Accounting&quot; ), &quot;Accounting, &quot;,null )&amp;
+IF ( INCLUDES ( Contact__r.Role__c , &quot;ASC&quot; ), &quot;ASC, &quot;,null )&amp;
+IF ( INCLUDES ( Contact__r.Role__c, &quot;Account Manager&quot; ), &quot;Account Manager, &quot;,null )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Employee Roles</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

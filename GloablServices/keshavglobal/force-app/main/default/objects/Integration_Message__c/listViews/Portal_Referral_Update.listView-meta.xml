@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Portal_Referral_Update</fullName>
+    <columns>IntegrationLogId__c</columns>
+    <columns>ObjectId__c</columns>
+    <columns>Message__c</columns>
+    <columns>ObjectName__c</columns>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>InvocationMethod__c</columns>
+    <columns>Status__c</columns>
+    <columns>StartTime__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>InvocationMethod__c</field>
+        <operation>equals</operation>
+        <value>PortalReferralUpdate</value>
+    </filters>
+    <label>Portal Referral Update</label>
+</ListView>

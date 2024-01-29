@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Level_3_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Service Level 3 Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Service_Level_2_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MD Orders</fullName>
+                <default>false</default>
+                <label>MD Orders</label>
+            </value>
+            <value>
+                <fullName>Medication Administration Record (MAR)</fullName>
+                <default>false</default>
+                <label>Medication Administration Record (MAR)</label>
+            </value>
+            <value>
+                <fullName>Plan of Care (POC)</fullName>
+                <default>false</default>
+                <label>Plan of Care (POC)</label>
+            </value>
+            <value>
+                <fullName>Resident Agreement</fullName>
+                <default>false</default>
+                <label>Resident Agreement</label>
+            </value>
+            <value>
+                <fullName>Nursing Assessment</fullName>
+                <default>false</default>
+                <label>Nursing Assessment</label>
+            </value>
+            <value>
+                <fullName>MDS - Initial</fullName>
+                <default>false</default>
+                <label>MDS - Initial</label>
+            </value>
+            <value>
+                <fullName>MDS - Ongoing</fullName>
+                <default>false</default>
+                <label>MDS - Ongoing</label>
+            </value>
+            <value>
+                <fullName>MDS - Discharge</fullName>
+                <default>false</default>
+                <label>MDS - Discharge</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>MD Orders</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>Medication Administration Record (MAR)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>Plan of Care (POC)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>Resident Agreement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>Nursing Assessment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>MDS - Initial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>MDS - Ongoing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HA</controllingFieldValue>
+            <valueName>MDS - Discharge</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EIN__c</fullName>
+    <description>Back end (accounting)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Agency Federal ID</inlineHelpText>
+    <label>EIN</label>
+    <length>10</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

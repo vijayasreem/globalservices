@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Code__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason Code</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Full Document Received</fullName>
+                <default>false</default>
+                <label>Full Document Received</label>
+            </value>
+            <value>
+                <fullName>Partial Document Received</fullName>
+                <default>false</default>
+                <label>Partial Document Received</label>
+            </value>
+            <value>
+                <fullName>No Records</fullName>
+                <default>false</default>
+                <label>No Records</label>
+            </value>
+            <value>
+                <fullName>Cancel</fullName>
+                <default>false</default>
+                <label>Cancel</label>
+            </value>
+            <value>
+                <fullName>Incorrect Document Received</fullName>
+                <default>false</default>
+                <label>Incorrect Document Received</label>
+            </value>
+            <value>
+                <fullName>Complete-Withdrawn</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complete-Withdrawn</label>
+            </value>
+            <value>
+                <fullName>Complete-Withdrawn-Bill</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complete-Withdrawn-Bill</label>
+            </value>
+            <value>
+                <fullName>Complete-Withdrawn-Full</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complete-Withdrawn-Full</label>
+            </value>
+            <value>
+                <fullName>Terminate</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Terminate</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Withdrawn</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

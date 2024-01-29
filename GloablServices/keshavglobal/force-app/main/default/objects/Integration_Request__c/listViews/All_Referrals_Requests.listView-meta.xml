@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Referrals_Requests</fullName>
+    <columns>NAME</columns>
+    <columns>IntegrationFamily__c</columns>
+    <columns>IntegrationSubFamily__c</columns>
+    <columns>IntegrationLogId__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Next_Run_Time__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>IntegrationSubFamily__c</field>
+        <operation>contains</operation>
+        <value>REFERRAL_SUBMIT</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>8/1/2020 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New</value>
+    </filters>
+    <label>All Referrals Requests</label>
+</ListView>

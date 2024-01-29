@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Coordination_Notes_Requests</fullName>
+    <columns>NAME</columns>
+    <columns>IntegrationFamily__c</columns>
+    <columns>IntegrationSubFamily__c</columns>
+    <columns>IntegrationLogId__c</columns>
+    <columns>Status__c</columns>
+    <columns>Reprocess__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>IntegrationSubFamily__c</field>
+        <operation>contains</operation>
+        <value>COORDINATION</value>
+    </filters>
+    <label>All Coordination Notes Requests</label>
+</ListView>
