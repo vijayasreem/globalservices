@@ -29,18 +29,18 @@ public class ServiceRequestQuerySelector {
         return intakeReqServiceReqListMap;
     }
     
-    public Static List<Service_Request__c> getServiceRequestsCreatedBefore24Hrs(){
-        List<Service_Request__c> last24hrsSrs = new List<Service_Request__c>();
+    public Static List<Service_Request__c> getServiceRequestsCreatedWithin72Hrs(){
+        List<Service_Request__c> last72hrsSrs = new List<Service_Request__c>();
         String hoursDelay = system.Label.Hours_for_Ready_Status;
         integer hours = integer.valueOf(hoursDelay);
         datetime dt = System.now().addHours(-hours);
-        last24hrsSrs = [SELECT id,Fax_Status__c,createdDate,Account_Product__r.Followup_Frequency__c,
+        last72hrsSrs = [SELECT id,Fax_Status__c,createdDate,Account_Product__r.Followup_Frequency__c,
                         Retry_Count__c,Fax_Date_Time__c,Next_Followup_Date_Time__c,Intake_Request__c,
                         Intake_Request__r.Date_Received__c
                         FROM Service_Request__c 
-                        WHERE Intake_Request__r.Date_Received__c < :dt And
+                        WHERE Intake_Request__r.Date_Received__c >= :dt And
                          Fax_Status__c='Queued'];
-        return last24hrsSrs;
+        return last72hrsSrs;
     }
     
     public Static List<Service_Request_Fax_job__c> getRightFaxJobs(){
@@ -89,8 +89,8 @@ public class ServiceRequestQuerySelector {
         }
         return SRrfjmap;
     }
-    public static Map<id,List<Service_Request_Line_Item__c>> getServiceRequestRelatedSRDDetails(Set<Id> srids){
-        Map<id,List<Service_Request_Line_Item__c>> serviceRequestDetailmap = new  Map<id,List<Service_Request_Line_Item__c>>();
+    public static Map<Id,List<Service_Request_Line_Item__c>> getServiceRequestRelatedSRDDetails(Set<Id> srids){
+        Map<Id,List<Service_Request_Line_Item__c>> serviceRequestDetailmap = new  Map<Id,List<Service_Request_Line_Item__c>>();
         List<Service_Request_Line_Item__c> SRDList = [select id,name,Service_Request__c,Status__c,
                                                    Reason_Code__c,Retry_Count_left__c 
                                                    from Service_Request_Line_Item__c 
