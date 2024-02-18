@@ -171,11 +171,13 @@ public virtual class TriggerHandler {
     }
     if(TriggerHandler.bypassedHandlers.contains(getHandlerName())) {
       system.debug('Bypassing Trigger HandlerName: ' + TriggerHandler.bypassedHandlers);
+      decrementLoopCount();
       return false;
     }
     // check if trigger handler class is disabled by the custom setting, TriggerSettings__c
     if(!TriggerState.isActive(triggerName)){
         system.debug('Trigger-disabled: ' + triggerName);
+        decrementLoopCount();
         return false;
     }     
     return true;
@@ -185,6 +187,15 @@ public virtual class TriggerHandler {
   private String getHandlerName() {
     system.debug('Returning Trigger HandlerName: ' + String.valueOf(this).substring(0,String.valueOf(this).indexOf(':')));
     return String.valueOf(this).substring(0,String.valueOf(this).indexOf(':'));
+  }
+
+  // decrement the loop count
+  @TestVisible
+  private void decrementLoopCount() {
+    String handlerName = getHandlerName();
+    if(TriggerHandler.loopCountMap.containsKey(handlerName)) {
+      TriggerHandler.loopCountMap.get(handlerName).decrement();
+    }
   }
 
   /***************************************
@@ -250,6 +261,10 @@ public virtual class TriggerHandler {
 
     public void setMax(Integer max) {
       this.max = max;
+    }
+    
+    public void decrement() {
+      this.count--;
     }
   }
 
