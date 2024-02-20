@@ -38,8 +38,10 @@ public class TaskTriggerHandler extends TriggerHandler{
         updateServiceRequestDetailsstatus(triggerOldMap,triggerNew);     
         invokeFollowUpStatusCalloutOnStatusChange(triggerOldMap,triggerNew);
         createActionResultWhenTaskClosed(triggerOldMap,triggerNew);
+        createActionResultWhenTaskOpen(triggerOldMap,triggerNew);
         CloseAllSRDWhenLastFollowupTaskCompleted(triggerOldMap,triggerNew);
     }
+    
     public static void ValidateReviewesstatueWhenTaskComplete(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
         set<Id> srdids= new set<Id>();
         set<Id> srids= new set<Id>();
@@ -74,6 +76,7 @@ public class TaskTriggerHandler extends TriggerHandler{
             }
         }
     }
+    
     public static void updatestatusonGeneralTask(List<Task> triggerNew){
         set<Id> setSerReqId = new set<Id>();
         set<Id> setSerReqDetId = new set<Id>();
@@ -124,6 +127,7 @@ public class TaskTriggerHandler extends TriggerHandler{
             }
         }
     }
+    
     public static void updatetaskfields(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
         set<Id> srids= new set<Id>();
         set<Id> srdids= new set<Id>();
@@ -248,7 +252,7 @@ public class TaskTriggerHandler extends TriggerHandler{
         }
     }
     
-    public static void 	invokeFollowUpStatusCalloutOnStatusChange(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
+    public static void invokeFollowUpStatusCalloutOnStatusChange(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
         set<Id> setTskId = new set<Id>();
         set<Id> setSerReqId = new set<Id>();
         
@@ -266,6 +270,7 @@ public class TaskTriggerHandler extends TriggerHandler{
             //FollowupStatusUpdateService.invokeAsyncFollowupStatusUpdate(setTskId,setSerReqId);
         }
     }
+    
     public static void createActionResultWhenTaskClosed(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
         set<Id> setTskId = new set<Id>();
         set<Id> setSerReqId = new set<Id>();
@@ -295,8 +300,8 @@ public class TaskTriggerHandler extends TriggerHandler{
                     if(srMap.containskey(objTsk.WhatId)){
                         Service_Request__c sr =  srMap.get(objTsk.WhatId); 
                         if(sr.Retry_Count__c!=0){
-							sr.Retry_Count__c = sr.Retry_Count__c -1;
-							}
+                            sr.Retry_Count__c = sr.Retry_Count__c -1;
+                        }
                         case cs = new case();
                         cs.id = srMap.get(objTsk.WhatId).Intake_Request__c;
                         cs.Followup_Count__c = srMap.get(objTsk.WhatId).Intake_Request__r.Followup_Count__c + 1;                    
@@ -336,6 +341,78 @@ public class TaskTriggerHandler extends TriggerHandler{
             GDSException.LogException(ex);
         }
     }
+    
+    public static void createActionResultWhenTaskOpen(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
+        set<Id> setTskId = new set<Id>();
+        set<Id> setSerReqId = new set<Id>();
+        List<Case> caseList = new List<Case>();
+        List<Service_Request__c> updateSRequestList = new  List<Service_Request__c>();
+        BusinessDaysUtility bdu = new BusinessDaysUtility();
+        List<Case_Action_Result__c> caseActionResultList = new List<Case_Action_Result__c>();
+        for(Task objTsk:triggerNew){
+            if(objTsk.status == constants.STATUS_OPEN && triggerOldMap != null && 
+               triggerOldMap.get(objTsk.id).Status!=objTsk.Status &&  objTsk.RecordTypeId == TaskFollowupRecid && 
+               objTsk.Task_Type__c==Constants.TASKTYPE_FOLLOWUP && objTsk.Who_called__c !=null && objTsk.When_was_the_call_made__c!=null)
+            {
+                setTskId.add(objTsk.Id);
+                setSerReqId.add(objTsk.WhatId);
+            }
+        }
+        map<Id,Service_Request__c> srMap = new map<Id,Service_Request__c>([SELECT id,Retry_Count__c,Intake_Request__c,Intake_Request__r.Provider_Name__c,Intake_Request__r.Followup_Count__c,
+                                                                           Account_Product__r.Followup_Retry__c,Account_Product__r.Followup_Frequency_Unit__c,
+                                                                           Account_Product__r.Followup_Frequency__c,Next_Followup_Date_Time__c
+                                                                           FROM Service_Request__c WHERE Id IN :setSerReqId]);
+        for(Task objTsk:triggerNew){
+            if(objTsk.status == constants.STATUS_OPEN && triggerOldMap != null && 
+               triggerOldMap.get(objTsk.id).Status!=objTsk.Status &&  objTsk.RecordTypeId == TaskFollowupRecid && 
+               objTsk.Task_Type__c==Constants.TASKTYPE_FOLLOWUP)
+            {
+                if(srMap != null && srMap.size() > 0){
+                    if(srMap.containskey(objTsk.WhatId)){
+                        Service_Request__c sr =  srMap.get(objTsk.WhatId); 
+                        if(sr.Retry_Count__c!=0){
+                            sr.Retry_Count__c = sr.Retry_Count__c -1;
+                        }
+                        case cs = new case();
+                        cs.id = srMap.get(objTsk.WhatId).Intake_Request__c;
+                        cs.Followup_Count__c = srMap.get(objTsk.WhatId).Intake_Request__r.Followup_Count__c + 1;                    
+                        caseList.add(cs);
+                        Case_Action_Result__c casear = manageCaseActionResults.prepareCaseActionResult('Follow-up', String.valueOf(sr.Intake_Request__c), 'Follow-up call to provider' ,
+                                                                                                       'Attempt '+  cs.Followup_Count__c +'/'+sr.Account_Product__r.Followup_Retry__c+' Made', 
+                                                                                                       objTsk.Description, objTsk.External_Note__c,userInfo.getUserId(),'');
+                        casear.Communicated_With__c = objTsk.Who_answered_for_every_follow_up__c; 
+                        caseActionResultList.add(casear);
+                        if(sr.Account_Product__r.Followup_Frequency__c != null && sr.Account_Product__r.Followup_Frequency_Unit__c != null){                          
+                            if(sr.Account_Product__r.Followup_Frequency_Unit__c == 'Days'){
+                                sr.Next_Followup_Date_Time__c = bdu.addDays(system.now(),Integer.valueOf(sr.Account_Product__r.Followup_Frequency__c));   
+                            }
+                            if(sr.Account_Product__r.Followup_Frequency_Unit__c == 'Hours'){
+                                sr.Next_Followup_Date_Time__c = system.now().addHours(Integer.valueOf(sr.Account_Product__r.Followup_Frequency__c));   
+                            }
+                            if(sr.Account_Product__r.Followup_Frequency_Unit__c == 'Minutes'){
+                                sr.Next_Followup_Date_Time__c = system.now().addMinutes(Integer.valueOf(sr.Account_Product__r.Followup_Frequency__c));   
+                            }  
+                        } 
+                        updateSRequestList.add(sr);
+                    }     
+                }
+            }
+        }
+        try {
+            if(updateSRequestList!=null && updateSRequestList.size()>0){
+                update updateSRequestList;
+            }
+            if(caseList != null && caseList.size() >0) {                 
+                update caseList;
+            }
+            if(caseActionResultList != null && caseActionResultList.size() >0) {                 
+                manageCaseActionResults.createActionResultList(caseActionResultList);
+            }
+        } catch(exception ex) {
+            GDSException.LogException(ex);
+        }
+    }
+    
     public static void CloseAllSRDWhenLastFollowupTaskCompleted(Map<Id,Task> triggerOldMap, List<Task> triggerNew){
         set<Id> setTskId = new set<Id>();
         set<Id> setSerReqId = new set<Id>();
@@ -345,10 +422,11 @@ public class TaskTriggerHandler extends TriggerHandler{
         for(Task objTsk:triggerNew){
             if((objTsk.status == constants.STATUS_CLOSED || objTsk.status == constants.STATUS_COMPLETED) && triggerOldMap != null && 
                triggerOldMap.get(objTsk.id).Status!=objTsk.Status &&  objTsk.RecordTypeId == TaskFollowupRecid && 
-               objTsk.Task_Type__c==Constants.TASKTYPE_FOLLOWUP ){
-                   setTskId.add(objTsk.Id);
-                   setSerReqId.add(objTsk.WhatId);
-               }
+               objTsk.Task_Type__c==Constants.TASKTYPE_FOLLOWUP )
+            {
+                setTskId.add(objTsk.Id);
+                setSerReqId.add(objTsk.WhatId);
+            }
         }
         if(setSerReqId!=null && setSerReqId.size()>0){
             srmap = ServiceRequestQuerySelector.getServiceRequestMap(setSerReqId);
