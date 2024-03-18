@@ -16,10 +16,11 @@ public class ServiceRequestLineItemRecsController {
         
         return srdlist;
     }
-     @AuraEnabled(cacheable=true)
+    
+    @AuraEnabled(cacheable=true)
     public static list<Service_Request_Document__c> getRPDrecords(Id recid){ 
         String sObjName = recid.getSObjectType().getDescribe().getName();
-         list<Service_Request_Document__c> rpdlist= new list<Service_Request_Document__c>();
+        list<Service_Request_Document__c> rpdlist= new list<Service_Request_Document__c>();
         if(sObjName=='Task'){
             system.debug('taskid'+recid);
             Task TaskDtls= TaskQuerySelector.getTaskdetails(recid);
@@ -33,23 +34,34 @@ public class ServiceRequestLineItemRecsController {
         }
         return rpdlist;
     }
+    
     @AuraEnabled
-    public static void updateRPDStatus(list<string> rpdids,string status){                
-		list<Service_Request_Document__c> updaterpdlist= new list<Service_Request_Document__c>();
-        for(Service_Request_Document__c rpd : [select id,Status__c,Is_Reviewed__c,Reviewed_Date_Time__c 
-                                                 from Service_Request_Document__c
-                                                 Where id IN :rpdids])
+    public static void updateRPDStatus(list<string> rpdids, string status){                
+        list<Service_Request_Document__c> updaterpdlist= new list<Service_Request_Document__c>();
+        for(Service_Request_Document__c rpd : [SELECT Id, Status__c, Is_Reviewed__c, Reviewed_Date_Time__c 
+                                                 FROM Service_Request_Document__c
+                                                 WHERE Id IN :rpdids])
         {
-         	Service_Request_Document__c rpd1= new Service_Request_Document__c();
-            rpd1.id=rpd.id;
-            rpd1.Is_Reviewed__c = true;
-            rpd1.Reviewed_Date_Time__c= system.now();
-            if(status=='Archived')
-                rpd1.Status__c = 'Archived';
-            updaterpdlist.add(rpd1);
+            rpd.Is_Reviewed__c = true;
+            rpd.Reviewed_Date_Time__c = System.now();
+            if(status == 'Archived')
+                rpd.Status__c = 'Archived';
+            updaterpdlist.add(rpd);
         }
-        if(updaterpdlist!=null && updaterpdlist.size()>0){
+        if(updaterpdlist != null && updaterpdlist.size() > 0){
             update updaterpdlist;
         }
+    }
+    
+    @AuraEnabled
+    public static void updateServiceRequestDocument(Service_Request_Document__c updatedDocument){
+        Service_Request_Document__c existingDocument = [SELECT Id, Name, Description__c, Status__c 
+                                                       FROM Service_Request_Document__c 
+                                                       WHERE Id = :updatedDocument.Id];
+        existingDocument.Name = updatedDocument.Name;
+        existingDocument.Description__c = updatedDocument.Description__c;
+        existingDocument.Status__c = updatedDocument.Status__c;
+        
+        update existingDocument;
     }
 }
