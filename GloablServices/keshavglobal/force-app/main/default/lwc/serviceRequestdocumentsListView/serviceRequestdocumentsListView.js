@@ -4,14 +4,16 @@ import updateRPDStatus from '@salesforce/apex/ServiceRequestLineItemRecsControll
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
+
 export default class serviceRequestdocumentsListView extends  NavigationMixin(LightningElement) {
-@api recordId;
-@track rpdrecords;
-@track rpdresp={};
-@track selectedrpds=[];
-@track reviewrpds=[];
-@track selrecflag;
-@track reviewflag;
+    @api recordId;
+    @track rpdrecords;
+    @track rpdresp={};
+    @track selectedrpds=[];
+    @track reviewrpds=[];
+    @track selrecflag;
+    @track reviewflag;
+
     @wire(getRPDrecords, { recid: '$recordId' })
     rpddtls(resp) {
         this.rpdresp = resp;
@@ -21,7 +23,7 @@ export default class serviceRequestdocumentsListView extends  NavigationMixin(Li
             let tempdata= JSON.parse(JSON.stringify(data));
             tempdata.forEach(element => {
                 if(element.Service_Request_Line_Item__r.Reason_Code__c=='Cancel'){
-                element['isCanceled']=false;
+                    element['isCanceled']=false;
                 }else{
                     element['isCanceled']=true; 
                 }
@@ -33,6 +35,7 @@ export default class serviceRequestdocumentsListView extends  NavigationMixin(Li
             console.log('Error',JSON.parse(JSON.stringify(error)));
         }
     }
+
     handleOnchange(event){
         let checkedlabel = event.target.checked;
         if(checkedlabel){
@@ -52,6 +55,7 @@ export default class serviceRequestdocumentsListView extends  NavigationMixin(Li
            this.selrecflag=false;
         }
     }
+
     navigateToClientRecordViewPage(event) {
         const selectedRecordId = event.target.name;
         console.log('rpdId',selectedRecordId);
@@ -64,6 +68,7 @@ export default class serviceRequestdocumentsListView extends  NavigationMixin(Li
             }
         });
     }
+
     handleonbuttonclick(event){
         let statusvalue= event.target.name;
         
@@ -88,9 +93,20 @@ export default class serviceRequestdocumentsListView extends  NavigationMixin(Li
             );
         this.clearallvalues();
         });
-        
     }
+
     clearallvalues(){
         this.selectedrpds='';
+    }
+
+    handleEditClick(event) {
+        const selectedRecordId = event.target.name;
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: selectedRecordId,
+                actionName: 'edit'
+            }
+        });
     }
 }
