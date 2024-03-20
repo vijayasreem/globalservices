@@ -1,4 +1,4 @@
-import { LightningElement,track,wire } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import getTaskListViewIds from '@salesforce/apex/ListViewIds.getTaskListViewIds';
 import getTaskReviewListViewIds from '@salesforce/apex/ListViewIds.getTaskReviewListViewIds';
@@ -9,9 +9,6 @@ import queuesReview from '@salesforce/apex/utilityQueues.queuesReview';
 import queuesFaxFailure from '@salesforce/apex/utilityQueues.queuesFaxFailure';
 import queuesUnmatched from '@salesforce/apex/utilityQueues.queuesUnmatched';
 
-
-import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
- 
 export default class CSRDemoTile extends NavigationMixin(LightningElement) {
     @track Id;
     @track listviewid;
@@ -24,90 +21,89 @@ export default class CSRDemoTile extends NavigationMixin(LightningElement) {
     @track umfollowup;
 
     @wire(permissionQueues)
-    Queueper({error, data}){
-        if(data){
-            console.log('this.Queueper---1------->',data);
+    Queueper({ error, data }) {
+        if (data) {
+            console.log('this.Queueper---1------->', data);
             this.srfollowup = data;
-        }else  if (error) {
+        } else if (error) {
             this.error = error;
-            console.log('Error',error);
-          }
+            console.log('Error', error);
+        }
     }
     @wire(queuesReview)
-    Qreview({error, data}){
-        if(data){
-            console.log('this.rfollowup---2------->',data);
+    Qreview({ error, data }) {
+        if (data) {
+            console.log('this.rfollowup---2------->', data);
             this.rfollowup = data;
-        }else  if (error) {
+        } else if (error) {
             this.error = error;
-            console.log('Error',error);
-          }
+            console.log('Error', error);
+        }
     }
     @wire(queuesFaxFailure)
-    Qfax({error, data}){
-        if(data){
-            console.log('this.fxfollowup---3------->',data);
+    Qfax({ error, data }) {
+        if (data) {
+            console.log('this.fxfollowup---3------->', data);
             this.fxfollowup = data;
-        }else  if (error) {
+        } else if (error) {
             this.error = error;
-            console.log('Error',error);
-          }
+            console.log('Error', error);
+        }
     }
     @wire(queuesUnmatched)
-    Qunmatched({error, data}){
-        if(data){
-            console.log('this.umfollowup---4------->',data);
+    Qunmatched({ error, data }) {
+        if (data) {
+            console.log('this.umfollowup---4------->', data);
             this.umfollowup = data;
-        }else  if (error) {
+        } else if (error) {
             this.error = error;
-            console.log('Error',error);
-          }
+            console.log('Error', error);
+        }
     }
 
     @wire(getTaskListViewIds)
     taskVar({ error, data }) {
         if (data) {
-            console.log('this.listviewIds---1------->',data);
-          this.listviewid = data;
-          console.log('this.listviewIds---------->',JSON.stringify(this.listviewid));
+            console.log('this.listviewIds---1------->', data);
+            this.listviewid = data;
+            console.log('this.listviewIds---------->', JSON.stringify(this.listviewid));
         } else if (error) {
-          this.error = error;
-          console.log('Error',error);
+            this.error = error;
+            console.log('Error', error);
         }
-      }
-      @wire(getTaskReviewListViewIds)
+    }
+    @wire(getTaskReviewListViewIds)
     reviewVar({ error, data }) {
         if (data) {
-          this.rlistviewid = data;
-          console.log('this.listviewIds-----2----->',JSON.stringify(this.rlistviewid));
+            this.rlistviewid = data;
+            console.log('this.listviewIds-----2----->', JSON.stringify(this.rlistviewid));
         } else if (error) {
-          this.error = error;
-          console.log('Error',error);
+            this.error = error;
+            console.log('Error', error);
         }
-      }
-      @wire(getTaskCoverSheetListViewIds)
+    }
+    @wire(getTaskCoverSheetListViewIds)
     caseVar({ error, data }) {
         if (data) {
-          this.cslistviewid = data;
-          console.log('this.listviewIds-----2----->',JSON.stringify(this.cslistviewid));
+            this.cslistviewid = data;
+            console.log('this.listviewIds-----2----->', JSON.stringify(this.cslistviewid));
         } else if (error) {
-          this.error = error;
-          console.log('Error',error);
+            this.error = error;
+            console.log('Error', error);
         }
-      }
-      @wire(getListViewIds)
+    }
+    @wire(getListViewIds)
     rpdVar({ error, data }) {
         if (data) {
-          this.rpdlistviewid = data;
-          console.log('this.listviewIds-----rpdlistviewid----->',JSON.stringify(this.rpdlistviewid));
+            this.rpdlistviewid = data;
+            console.log('this.listviewIds-----rpdlistviewid----->', JSON.stringify(this.rpdlistviewid));
         } else if (error) {
-          this.error = error;
-          console.log('Error',error);
+            this.error = error;
+            console.log('Error', error);
         }
-      }
+    }
+
     handleListViewNavigation(event) {
-       //this.id  =  event.target.dataset.id;
-       //console.log('---------->'+this.id);
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
             attributes: {
@@ -115,7 +111,8 @@ export default class CSRDemoTile extends NavigationMixin(LightningElement) {
                 actionName: 'list'
             },
             state: {
-                filterName: this.listviewid[0].Id
+                filterName: this.listviewid[0].Id,
+                objectName: 'Task' // Added object name value
             }
         });
     }
@@ -127,7 +124,8 @@ export default class CSRDemoTile extends NavigationMixin(LightningElement) {
                 actionName: 'list'
             },
             state: {
-                filterName: this.rlistviewid[0].Id 
+                filterName: this.rlistviewid[0].Id,
+                objectName: 'Task' // Added object name value
             }
         });
     }
@@ -139,7 +137,8 @@ export default class CSRDemoTile extends NavigationMixin(LightningElement) {
                 actionName: 'list'
             },
             state: {
-                filterName: this.cslistviewid[0].Id
+                filterName: this.cslistviewid[0].Id,
+                objectName: 'Task' // Added object name value
             }
         });
     }
@@ -151,7 +150,8 @@ export default class CSRDemoTile extends NavigationMixin(LightningElement) {
                 actionName: 'list'
             },
             state: {
-                filterName: this.rpdlistviewid[0].Id 
+                filterName: this.rpdlistviewid[0].Id,
+                objectName: 'Received_Provider_Document__c' // Added object name value
             }
         });
     }
